@@ -1,0 +1,74 @@
+* {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.clearfix::after,
+.clearfix::before {
+  display: block;
+  content: "";
+  clear: both;
+}
+.w{
+  width: 1200px;
+  margin: 0 auto;
+}
+/* 头部开始 */
+header {
+  height: 180px;
+  border-bottom: 1px solid #000;
+  box-shadow: #ccc 1px 6px 10px;
+  /* line-height: 180px; */
+}
+header .top{
+  height: 180px;
+}
+header img{
+  width: 220px;
+  height: 90px;
+  margin-top: 25px;
+  display: inline-block;
+}
+header input{
+  width: 420px;
+  height: 50px;
+  border: 1px solid #ccc;
+  outline: none;
+  vertical-align: top;
+  border-radius:6px 0px 0px 6px;
+  font-size: 16px;
+}
+header button{
+  width: 100px;
+  height: 50px;
+  border: 1px solid rgb(212, 212, 212);
+  background-color: #fff;
+  margin-left: -5px;  
+  border-radius:0 5px 5px 0;
+  cursor: pointer;
+  
+}
+header h2{
+  height: 50px;
+  line-height: normal;
+}
+.search{
+  float: right;
+  margin-top: 60px;
+  margin-right: 80px;
+}
+header a{
+  /* line-height: 50px; */
+  display: inline-block;
+  width: 65px;
+  height: 40px;
+  /* border: 1px solid #000; */
+  text-align: center;
+  margin-left:  25px;;
+  color: #000;
+  font-size: 20px;
+}
+
+

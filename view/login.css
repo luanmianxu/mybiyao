@@ -1,0 +1,26 @@
+header a:nth-of-type(2){
+    border-bottom: rgb(129,15,135) 3px solid;
+    color:rgb(129,15,135) ;
+}
+
+
+.box{
+    margin: 0 auto;
+    width: 300px;
+    margin-top: 100px;
+}
+.box input,.login{
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    outline: none;
+}
+.login{
+    background-color: rgb(103,194,59);
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    cursor: pointer;
+}
