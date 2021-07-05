@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/common.css">
+    <script src="../js/request.js"></script>
 </head>
+
 <body>
     <header>
         <div class="top w">
@@ -27,11 +30,35 @@
 
 
 
-    <div class="box"> 
-        <input type="text" placeholder="  用户名"><br>
-        <input type="text" placeholder="  密码"><br>
+    <div class="box">
+        <input type="text" placeholder="  用户名" value=''><br>
+        <input type="password" placeholder="  密码" value=""><br>
 
         <div class="login">注册</div>
     </div>
 </body>
+<script>
+    var u = document.querySelector('.box [type=text]')
+    var p = document.querySelector('.box [type=password]')
+    var login = document.querySelector('.login')
+
+    login.addEventListener('click', function () {
+        var reg=/^[0-9a-z_]{6,12}$/i;
+        var reg1=/^[0-9a-z]{6,12}$/i;
+        if(reg.test(u.value)&&reg1.test(p.value)){
+        REQUEST.get('/register', { params: { username: u.value, password: p.value } }, function (data) {
+
+            if (data.code == 1) {
+                alert('注册成功')
+                location.href = './login.html'
+            } else {
+                alert('注册失败')
+            }
+        })
+    }else{
+        alert('格式不对')
+    }
+    })
+</script>
+
 </html>

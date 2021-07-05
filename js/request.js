@@ -97,7 +97,7 @@ function createAxios(config){
 
 
 var REQUEST = createAxios({
-    baseurl:'http://49.232.47.192:9527'
+    baseurl:'http://49.232.47.192:9527/api'
 })
 
 

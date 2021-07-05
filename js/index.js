@@ -1,5 +1,7 @@
 // window.onload = function () {
 
+// const { log } = require("console")
+
 var ul = document.querySelector(".big")
 var left = document.querySelector('.left')
 var right = document.querySelector('.right')
@@ -45,13 +47,15 @@ window.addEventListener("scroll", function (e) {
 })
 
 function back(obj, high) {
-    var timer = obj.time
-    obj.time = setInterval(function () {
+    //  = obj.time
+    var timer = setInterval(function () {
         var step = (high - window.pageYOffset) / 10;
-        if (window.pageYOffset == high) {
-            clearInterval(obj.time)
+        if (document.documentElement.scrollTop <= 0) {
+            clearInterval(timer)
+        } else {
+            window.scrollTo(0, window.pageYOffset + step);
         }
-        window.scrollTo(0, window.pageYOffset + step);
+
     }, 16)
 
 }
@@ -63,7 +67,7 @@ backTop.onclick = function () {
 
 
 // 渲染列表 
-function  Rendering(data, container) {
+function Rendering(data, container) {
     var list = document.querySelector(`${container}`)
     var html = list.innerHTML
     for (var i = 0; i < data.length; i++) {
@@ -77,12 +81,16 @@ function  Rendering(data, container) {
             `
         list.innerHTML = html
     }
+
+
 }
-function add(page){
-   REQUEST.get('/api/goodlist', { params: { page: page } },function(data){
-    Rendering(data,'.list ul')
-}
-) 
+
+
+function add(page) {
+    REQUEST.get('/goodlist', { params: { page: page } }, function (data) {
+        Rendering(data, '.list ul')
+    }
+    )
 }
 
 //#region 
@@ -102,46 +110,52 @@ function add(page){
 //#endregion
 
 
- // 懒加载
+// 懒加载
+
+var page = 1
+add(page)
 
 
-    var page=1
-    add(page)
-    var lan=  setInterval(function(){
-    var imgs = document.querySelectorAll(".item img")
-    console.log(imgs);
-    var lantop=document.documentElement.scrollTop
-    clearInterval(lan)
-    var endImg=imgs[imgs.length-1]
-    for(var i=0;i<imgs.length;i++){
-        if(window.innerHeight + lantop >= imgs[i].offsetTop){
-            imgs[i].src=imgs[i].dataset.src
+var getImgs = setTimeout(function () {
+    var imgs = document.querySelectorAll('.item img')
+    clearTimeout(getImgs)
+    window.addEventListener('scroll', function () {
+        lazyLoad(imgs)
+    })
+
+
+    function lazyLoad(imgs) {
+        imgs = document.querySelectorAll('.item img')
+        var endImgs = imgs[imgs.length - 1]
+        for (var i = 0; i < imgs.length; i++) {
+            var listHeight = document.querySelector('.list').offsetHeight
+            console.log(listHeight);
+            var height = imgs[i].offsetTop
+            var wheight = window.innerHeight
+            var scrollheight = document.documentElement.scrollTop
+            if (scrollheight + wheight >= height) {
+                imgs[i].src = imgs[i].dataset.src
+            }
         }
-        //判断触底
-        var load =document.createElement('div')
-        if(window.innerHeight +lantop >=imgs.offsetTop +imgs.offsetHeight){
-            // load.className='load'
-            // load.style.top=top +'px';
-            // load.innerHTML=`
-            // <img src="../asssts/images/loading.png" alt="logo" class="logo">
-            // `
-            list.appendChild(load)
-            setTimeout(function(){
-                page++
-                add(page)
-            },800)
+        if (Math.abs((document.documentElement.scrollTop + window.innerHeight) - document.body.scrollHeight) < 50) {
+
+            page++
+            add(page)
+
         }
+
+
     }
-    },100)
+}, 800)
+
+
+
+
+// 
+
+a()
 
 
 
 
 
-
-
-
-
-
-
-// }

@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/request.js"></script>
 </head>
 
 <body>
@@ -31,10 +32,33 @@
 
     <div class="box"> 
         <input type="text" placeholder="  用户名"><br>
-        <input type="text"><br>
+        <input type="password"><br>
 
         <div class="login">登录</div>
     </div>
 </body>
+<script>
+    var u = document.querySelector('.box [type=text]')
+    var p = document.querySelector('.box [type=password]')
+    var login = document.querySelector('.login')
 
+    login.addEventListener('click', function () {
+        var reg=/^[0-9a-z_]{6,12}$/i;
+        var reg1=/^[0-9a-z]{6,12}$/i;
+        if(reg.test(u.value)&&reg1.test(p.value)){
+        REQUEST.get('/login', { params: { username: u.value, password: p.value } }, function (data) {
+
+            if (data.code == 1) {
+                alert('登录成功')
+                localStorage.setItem('loginF',data.token)
+                location.href = './index.html'
+            } else {
+                alert('登录失败')
+            }
+        })
+    }else{
+        alert('格式不对')
+    }
+    })
+</script>
 </html>

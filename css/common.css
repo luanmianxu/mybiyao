@@ -60,11 +60,10 @@ header h2{
   margin-right: 80px;
 }
 header a{
-  /* line-height: 50px; */
   display: inline-block;
-  width: 65px;
+  line-height: 50px;
+  padding: 0 8px 5px;
   height: 40px;
-  /* border: 1px solid #000; */
   text-align: center;
   margin-left:  25px;;
   color: #000;
