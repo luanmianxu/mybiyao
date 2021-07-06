@@ -68,12 +68,13 @@ backTop.onclick = function () {
 
 // 渲染列表 
 function Rendering(data, container) {
+    console.log(data);
     var list = document.querySelector(`${container}`)
     var html = list.innerHTML
     for (var i = 0; i < data.length; i++) {
         html += `
-                <li class="item">
-                    <img src="../asssts/images/loading.jpg" alt="" data-src='${data[i].img_list_url}'>
+                <li class="item" data-Id=${data[i].Id}>
+                    <img src="../assets/images/loading.jpg" alt="" data-src='${data[i].img_list_url}'>
                     <h3>${data[i].title}</h3>
                     <span class="fh">￥</span><span class="fh fl">${data[i].price}</span>
                     ${data[i].mack}
@@ -81,7 +82,16 @@ function Rendering(data, container) {
             `
         list.innerHTML = html
     }
-
+    var item=document.querySelectorAll('.item')
+    
+    for(let i=0;i<item.length;i++){
+         item[i].addEventListener('click',function(){
+            //  console.log(data.Id);
+            var ids=item[i].getAttribute('data-Id')
+             location.href=`../view/details.html?goodId=${ids}`
+    })
+    }
+   
 
 }
 
@@ -129,7 +139,7 @@ var getImgs = setTimeout(function () {
         var endImgs = imgs[imgs.length - 1]
         for (var i = 0; i < imgs.length; i++) {
             var listHeight = document.querySelector('.list').offsetHeight
-            console.log(listHeight);
+            // console.log(listHeight);
             var height = imgs[i].offsetTop
             var wheight = window.innerHeight
             var scrollheight = document.documentElement.scrollTop

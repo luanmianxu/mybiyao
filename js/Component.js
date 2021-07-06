@@ -1,6 +1,6 @@
 function a() {
     var a = document.querySelectorAll(' .top h2 a')
-    console.log(a);
+    // console.log(a);
     if (localStorage.getItem('loginF')) {
         a[1].style.display = 'none';
         a[2].style.display = 'none';

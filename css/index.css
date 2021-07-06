@@ -101,7 +101,7 @@ nav ul li{
     border: 1px solid #ccc;
     float: left;
     height: 300px;
-
+    margin-bottom: 10px;
 }
 .item img{
     width: 228px;
