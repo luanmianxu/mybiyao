@@ -1,0 +1,38 @@
+.list{
+    margin-top: 20px;
+    
+}
+.list ul{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.item{
+    width: 230px;
+    /* text-align: center; */
+    border: 1px solid #ccc;
+    float: left;
+    height: 300px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.item img{
+    width: 228px;
+    height: 200px;
+}
+.item h3{
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.fh{
+    color: red;
+    font-size: 14px;
+    
+}
+.fl{
+    margin-right: 95px;
+}
+.fr{
+    float: right;
+}

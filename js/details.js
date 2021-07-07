@@ -12,9 +12,9 @@
 
 // const { clear } = require("console");
 
-
+// var type_one;
 var res = (location.search).split('=')[1]
-console.log(res);
+// console.log(res);
 
 
 REQUEST.get('/detail', {
@@ -49,6 +49,19 @@ REQUEST.get('/detail', {
         <li><img src=${imgs[4]} alt=""></li>
         `
     tab.innerHTML = tab_html
+    var imgSrc=document.querySelectorAll('.tab img')
+    var smallSrc=document.querySelector('.small img')
+    var bigSrc=document.querySelector('.big img')
+    for(let i=0;i<imgSrc.length;i++){
+        imgSrc[i].addEventListener('click',function(){
+            smallSrc.src=imgSrc[i].src
+            bigSrc.src=imgSrc[i].src
+            for(let k=0;k<imgSrc.length;k++){
+                imgSrc[k].style.border='none'
+            }
+            imgSrc[i].style.border='4px solid green'
+        })
+    }
 
 
     var title = document.querySelector('.title')
@@ -62,39 +75,50 @@ REQUEST.get('/detail', {
             加入购物车
         </div>
         `
+        // type_one=data[0].type_one
     title.innerHTML = title_html
-
-
-})
-REQUEST.get('/serach', {
-    params: {
-        word: '咖啡'
-    }
-}, function (data) {
-    for (var i = 0; i < 5; i++) {
+    console.log(data[0].type_one);
+    REQUEST.get('/search', {
+        params: {
+           word:data[0].type_one
+        }
+    }, function (data) {
+        console.log(123);
         var footer = document.createElement('footer')
         footer.className = 'w'
         document.body.append(footer)
-        var list = footer.innerHTML
-        list += `
-    <h2>相关商品列表</h2>
-    <div class="related">
-        <ul>
-            <li class="related-item">
-                <img src="${data[i].img_list_url}" alt="">
-                <h3>${data[i].title}</h3>
-                <span class="fh">￥</span><span class="fh">59</span>
-                ${data[i].mack}
-            </li>
-        </ul>
-    </div>
-    `
-        footer.innerHTML = list
+        var h2=document.createElement('h2')
+        footer.appendChild(h2)
+        h2.innerText='相关商品列表'
+        var related=document.createElement('div')
+        related.className='related'
+        footer.appendChild(related)
+        var ul=document.createElement('ul')
+        related.appendChild(ul)
+        var list = ul.innerHTML
+        for (var i = 0; i < 10; i++) {
+            list += `
+                <li class="related-item">
+                    <img src="${data[i].img_list_url}" alt="">
+                    <h3>${data[i].title}</h3>
+                    <span class="fh">￥</span><span class="fh">59</span>
+                    ${data[i].mack}
+                </li>
+        `
+            ul.innerHTML = list
+        }
     }
-}
-)
+    )
 
+})
+    // console.log(type_one);
 
+// 固定导航
+
+fixedTop()
+
+// 回到顶部
+backTop()
 // 延时获取
 var getele = setTimeout(function () {
     var small = document.querySelector('.small')
@@ -109,8 +133,8 @@ var getele = setTimeout(function () {
         left = left < 0 ? 0 : left > 300 ? 300 : left
         mask.style.top = top + 'px';
         mask.style.left = left + 'px'
-        big.style.top = - top / 350 * 400 + 'px'
-        big.style.left = - left / 350 * 400 + 'px'
+        big.style.top = - (top * ( 800/300) )+ 'px'
+        big.style.left = - (left *( 800/300)) + 'px'   
     })
     clearTimeout(getele)
 }, 1000)

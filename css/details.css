@@ -1,7 +1,7 @@
 main{
     
     border: 1px solid #000;
-    height: 800px;
+    height: 630px;
 }
 
 
@@ -23,6 +23,7 @@ main{
 }
 /* 放大镜 */
 .magnifier{
+    width: 1200px;
     margin-top: 8px;
     position: relative;
 }
@@ -31,11 +32,12 @@ main{
     height: 400px;
     background-color: #ccc;
     /* margin-left: 50px; */
+    position: relative;
 }
 .small img{
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 400px;
 }
 .big{
     width: 400px;
@@ -80,10 +82,9 @@ main{
 .title{
     width: 300px;
     height: 200px;
-    border: 1px solid #000;
     position: absolute;
-    top: 200px;
-    right: 250px;
+    top: 60px;
+    left: 580px;
     text-align: center;
 }
 .addshopCar{
@@ -94,6 +95,7 @@ main{
     background-color: rgb(245, 35, 35);
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
 }
 /* 相关列表 */
 
@@ -102,18 +104,21 @@ footer h2{
 }
 .related{
     margin-top: 20px;
-    
+    display: flex;
+    justify-content: space-between;
 }
 .related ul{
+    width: 1200px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
     flex-wrap: wrap;
 }
 .related-item{
     width: 230px;
     /* text-align: center; */
     border: 1px solid #ccc;
-    float: left;
+    /* float: left; */
+    display: inline-block;
     height: 300px;
     margin-bottom: 10px;
 }

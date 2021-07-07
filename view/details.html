@@ -10,22 +10,32 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/details.css">
     <script src="../js/api.js"></script>
+    <script src="../js/fixedTop.js"></script>
+    <script src="../js/backTop.js"></script>
 </head>
 
-<body>
-    <div class="fixedTop">
-        <div class="w">
-            <a href="./index.html">首页</a>
-            <a href="./login.html">登录</a>
-            <a href="./register.html">注册</a>
 
-            <div class="fixedSearch">
-                <input type="text" placeholder="   请输入你想要的商品">
+<body>
+    <header>
+        <div class="top w">
+            <img src="../assets/images/logo.png" alt="logo" class="logo">
+
+            <div class="search">
+                <input type="text" placeholder="请输入你想要的商品">
                 <button>搜索</button>
             </div>
+            <h2>
+                <a href="./index.html">首页</a>
+                <a href="./login.html">登录</a>
+                <a href="./register.html">注册</a>
+                <a href="./shoppingCar.html" style="display: none;">购物车</a>
+                <a href="javaScript:;" style="display: none;">退出登录</a>
+            </h2>
         </div>
-    </div>
+    </header>
 
+
+    
     <!-- main开始 -->
 
 
@@ -49,6 +59,14 @@
             <div class="big">
                 <img src="../assets/images/d.jpg" alt="">
             </div> -->
+            <div class="title">
+                <!-- <h3>xxxxxxx</h3>
+                <p>￥99</p>
+                <span>⭐⭐⭐⭐⭐ 5.0</span>
+                <div class="addshopCar">
+                    加入购物车
+                </div> -->
+            </div>
         </div>
 
          <ul class="tab">
@@ -60,14 +78,7 @@
         </ul>
 
 
-        <div class="title">
-            <!-- <h3>xxxxxxx</h3>
-            <p>￥99</p>
-            <span>⭐⭐⭐⭐⭐ 5.0</span>
-            <div class="addshopCar">
-                加入购物车
-            </div> -->
-        </div>
+        
     <!-- </main> --> 
 
 
@@ -86,6 +97,7 @@
 
     </footer> -->
 
+    
 </body>
 <script src="../js/details.js"></script>
 

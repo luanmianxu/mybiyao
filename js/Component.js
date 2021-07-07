@@ -1,4 +1,4 @@
-function a() {
+function navLogin() {
     var a = document.querySelectorAll(' .top h2 a')
     // console.log(a);
     if (localStorage.getItem('loginF')) {
