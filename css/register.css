@@ -14,7 +14,6 @@ header a:nth-of-type(3){
     height: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 30px;
     outline: none;
 }
 .login{
@@ -23,4 +22,8 @@ header a:nth-of-type(3){
     line-height: 45px;
     color: #fff;
     cursor: pointer;
+}
+p{
+    font-size: 14px;
+    color: red;
 }

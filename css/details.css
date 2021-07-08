@@ -11,13 +11,13 @@ main{
     height: 40px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    
+     color: rgb(153, 153, 153);
     line-height: 40px;
     cursor: pointer;
 }
-.back a{
-    color: rgb(153, 153, 153);
-}
+/* .back a{
+   
+} */
 .back a:hover{
     color: black;
 }

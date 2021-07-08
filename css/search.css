@@ -9,12 +9,17 @@
 }
 .item{
     width: 230px;
-    /* text-align: center; */
     border: 1px solid #ccc;
     float: left;
-    height: 300px;
+    height: 310px;
     margin-bottom: 10px;
+    transition: all .5s;
     cursor: pointer;
+    border-radius: 5px;
+}
+.item:hover{
+    transform: translateY(-3px);
+    box-shadow: rgb(39, 39, 39) 0 0px 13px;
 }
 .item img{
     width: 228px;

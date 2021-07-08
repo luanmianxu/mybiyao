@@ -32,22 +32,47 @@
 
     <div class="box"> 
         <input type="text" placeholder="  用户名"><br>
+        <p>只能包含数字、字母、下划线6-12位</p>
         <input type="password"><br>
-
+        <p>只能包含数字、字母、下划线6-12位</p>
         <div class="login">登录</div>
     </div>
 </body>
 <script>
-    var u = document.querySelector('.box [type=text]')
-    var p = document.querySelector('.box [type=password]')
+    var username = document.querySelector('.box [type=text]')
+    var password = document.querySelector('.box [type=password]')
+    var p=document.querySelectorAll('.box p')
     var login = document.querySelector('.login')
+
+    username.addEventListener('change',function(){
+        var reg=/^[0-9a-z_]{6,12}$/i;
+        if(reg.test(username.value)){
+            // p[0].style.opacity='0'
+            p[0].innerHTML='验证通过'
+            // p[0].style.opacity='1'
+            p[0].style.color='green'
+        }else{
+            p[0].innerHTML='只能包含数字、字母、下划线6-12位'
+            p[0].style.color='red'
+        }
+    })
+    password.addEventListener('change',function(){
+        var reg=/^[0-9a-z_]{6,12}$/i;
+        if(reg.test(password.value)){
+            p[1].innerHTML='验证通过'
+            p[1].style.color='green'
+        }else{
+            p[1].innerHTML='只能包含数字、字母、下划线6-12位'
+            p[1].style.color='red'
+        }
+    })
+
 
     login.addEventListener('click', function () {
         var reg=/^[0-9a-z_]{6,12}$/i;
         var reg1=/^[0-9a-z]{6,12}$/i;
-        if(reg.test(u.value)&&reg1.test(p.value)){
-        REQUEST.get('/login', { params: { username: u.value, password: p.value } }, function (data) {
-
+        if(reg.test(username.value)&&reg.test(password.value)){
+        REQUEST.get('/login', { params: { username: username.value, password: password.value } }, function (data) {
             if (data.code == 1) {
                 alert('登录成功')
                 localStorage.setItem('loginF',data.token)

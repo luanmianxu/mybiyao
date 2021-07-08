@@ -1,7 +1,10 @@
 window.onload = function () {
-
+  // 固定导航栏
+    fixedTop()
+    // // 回到顶部
+    backTop()
     //轮播图
-    var ul = document.querySelector(".swiper .big")
+    var swiperUl = document.querySelector(".swiper .big")
     var left = document.querySelector('.swiper .left')
     var right = document.querySelector('.swiper .right')
     var spans = document.querySelectorAll('.sricle span')
@@ -11,34 +14,33 @@ window.onload = function () {
         mr += 1100
         index++
         if (mr >= 6600 && index >= 5) {
-            ul.style.transition = 'none'
+            swiperUl.style.transition = 'none'
             index = 0
             mr = 0
         } else {
-            ul.style.transition = 'all .5s'
+            swiperUl.style.transition = 'all .5s'
         }
-        // index=index>=4?0:index
+
         for (var i = 0; i < spans.length; i++) {
             spans[i].style.backgroundColor = '#ccc'
         }
-        ul.style.marginLeft = - mr + "px"
+        swiperUl.style.marginLeft = - mr + "px"
         spans[index].style.backgroundColor = '#fff'
+        console.log(mr,index);
     }, 2000)
+
     left.onclick = function () {
         mr -= 1100;
-        ul.style.marginLeft = - mr + "px"
+        swiperUl.style.marginLeft = - mr + "px"
     }
     right.onclick = function () {
         mr += 1100;
-        ul.style.marginLeft = - mr + "px"
+        swiperUl.style.marginLeft = - mr + "px"
+        
     }
+   
 
-    
-
-    // 固定导航栏
-    fixedTop()
-    // 回到顶部
-    backTop()
+  
 
 
     // 渲染列表 
@@ -102,7 +104,7 @@ window.onload = function () {
                     imgs[i].src = imgs[i].dataset.src
                 }
             }
-            if (Math.abs((document.documentElement.scrollTop + window.innerHeight) - document.body.scrollHeight) < 30) {
+            if (Math.abs((document.documentElement.scrollTop + window.innerHeight) - document.body.scrollHeight) < 300) {
                 
                 if (flag) {
                     flag = 0
@@ -131,4 +133,14 @@ window.onload = function () {
     })
 
 
+    // tab切换
+    var navLis=document.querySelectorAll('nav li')
+    console.log(navLis);
+    navLis.forEach(function(item,index){
+        item.onclick=function(){
+            var navLisCode=encodeURI(item.innerText)
+            loading()
+            location=`../view/classification.html?word=${navLisCode}`
+        }
+    })
 }

@@ -1,5 +1,5 @@
 var res=decodeURI( (location.search).split('=')[1])
-
+   
 REQUEST.get('/search',
  { params: { word: res } },
   function (data) {
@@ -20,17 +20,22 @@ REQUEST.get('/search',
         `
         list.innerHTML = html
     }
-    var item = document.querySelectorAll('.item')
-    console.log(item);
-    for (let i = 0; i < item.length;i++) {
-        item[i].addEventListener('click', function () {
-            console.log(111);
-            loading()
-            var ids = item[i].getAttribute('data-Id')
-            location.href = `../view/details.html?goodId=${ids}`
-        })
-    }
-
+    // 组件
     fixedTop()
     backTop()
+   loading()
+    var item = document.querySelectorAll('.item')
+    // console.log(item);
+    for (var i = 0; i < item.length;i++) {
+        item[i].addEventListener('click', function () {
+            console.log(111);
+            
+            var ids = this.getAttribute('data-Id');
+            location.href = `../view/details.html?goodId=${ids}`
+        })
+    
+
+    
+    
+ }
 })

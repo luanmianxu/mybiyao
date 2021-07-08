@@ -2,20 +2,10 @@
 
 
 
-// api.getDetail({
-//     params:{
-//         goodId:2
-//     }
-// },function(data){
-//     console.log(data);
-// })
 
-// const { clear } = require("console");
 
-// var type_one;
 var res = (location.search).split('=')[1]
 // console.log(res);
-
 
 REQUEST.get('/detail', {
     params: {
@@ -77,13 +67,11 @@ REQUEST.get('/detail', {
         `
         // type_one=data[0].type_one
     title.innerHTML = title_html
-    console.log(data[0].type_one);
     REQUEST.get('/search', {
         params: {
            word:data[0].type_one
         }
     }, function (data) {
-        console.log(123);
         var footer = document.createElement('footer')
         footer.className = 'w'
         document.body.append(footer)
@@ -109,10 +97,28 @@ REQUEST.get('/detail', {
         }
     }
     )
+    var addshopCar=document.querySelector('.addshopCar')
+    console.log(addshopCar);
+    addshopCar.addEventListener('click',function(){
+        REQUEST.get('/add', {
+            params: {
+                token:localStorage.getItem('loginF'),
+               goodId:res
+            }
+        }, function (data) {
+            if(data.code==0){
+                alert('请重新登录')
+                location.href='../view/login.html'
+            }else if(data.code==1){
+                alert('添加成功')
+            }else if(data.code==2){
+                alert('添加失败')
+            }
+        })
+    })
 
 })
-    // console.log(type_one);
-
+// loading()
 // 固定导航
 
 fixedTop()
@@ -122,7 +128,6 @@ backTop()
 // 延时获取
 var getele = setTimeout(function () {
     var small = document.querySelector('.small')
-    // console.log(small);
     var mask = document.querySelector('.mask')
     var big = document.querySelector('.big img')
     var magnifier = document.querySelector('.magnifier')
@@ -139,3 +144,12 @@ var getele = setTimeout(function () {
     clearTimeout(getele)
 }, 1000)
 
+
+// 返回
+var back=document.querySelector('.back')
+back.addEventListener('click',function(){
+    history.back()
+})
+
+// 
+    
