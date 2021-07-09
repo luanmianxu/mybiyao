@@ -5,7 +5,7 @@
 
 
 var res = (location.search).split('=')[1]
-// console.log(res);
+console.log(res);
 
 REQUEST.get('/detail', {
     params: {
@@ -151,5 +151,13 @@ back.addEventListener('click',function(){
     history.back()
 })
 
-// 
+// 固定导航搜索
+    var searchText =document.querySelector('.fixedSearch input')
+    var searchKey=document.querySelector('.fixedSearch button')
+    searchKey.addEventListener('click',function(){
+        var code=encodeURI(searchText.value)
+        // loading()
+        location.href=`../view/search.html?word=${code}`
+        
+    })
     

@@ -45,7 +45,10 @@ REQUEST.get('/goodlist',
                         }
                         
                     }
+                    var floorScrollP=document.querySelectorAll('.floor p')
+                    var floorScrollH=document.querySelectorAll('.list h2 ')
                     window.onscroll=function(){
+
                         for(var b=0;b<floorScrollH.length;b++){
     
                         if((document.documentElement.scrollTop + window.innerHeight/2) >= floorScrollH[b].offsetTop){
@@ -56,6 +59,7 @@ REQUEST.get('/goodlist',
                         }
                         }
                         }
+                        console.log(floorScrollP);
                          for(let d=0;d<floorScrollP.length;d++){
                              floorScrollP[d].addEventListener('click',function(){
                                  window.scrollTo(0,floorScrollH[d].offsetTop)   
@@ -163,13 +167,32 @@ REQUEST.get('/goodlist',
 
                 })
                     
-
+        
 
         })
         
         //
     }   
+    // 固定导航搜索
+    var searchText =document.querySelector('.fixedSearch input')
+    var searchKey=document.querySelector('.fixedSearch button')
+    searchKey.addEventListener('click',function(){
+        var code=encodeURI(searchText.value)
+        // loading()
+        location.href=`../view/search.html?word=${code}`
+        
+    })
 
-
+window.onload=function(){
+// 搜索 
+var searchText =document.querySelector('.search input')
+var searchKey=document.querySelector('.search button')
+searchKey.addEventListener('click',function(){
+    var code=encodeURI(searchText.value)
+    // loading()
+    location.href=`../view/search.html?word=${code}`
+    
+})
+}
 
 

@@ -1,6 +1,17 @@
 window.onload = function () {
   // 固定导航栏
     fixedTop()
+
+
+    // 固定导航搜索
+    var searchText =document.querySelector('.fixedSearch input')
+    var searchKey=document.querySelector('.fixedSearch button')
+    searchKey.addEventListener('click',function(){
+     var code=encodeURI(searchText.value)
+     // loading()
+     location.href=`../view/search.html?word=${code}`
+     
+ })
     // // 回到顶部
     backTop()
     //轮播图
@@ -26,7 +37,6 @@ window.onload = function () {
         }
         swiperUl.style.marginLeft = - mr + "px"
         spans[index].style.backgroundColor = '#fff'
-        console.log(mr,index);
     }, 2000)
 
     left.onclick = function () {
@@ -34,7 +44,7 @@ window.onload = function () {
         swiperUl.style.marginLeft = - mr + "px"
     }
     right.onclick = function () {
-        mr += 1100;
+        mr += 1100; 
         swiperUl.style.marginLeft = - mr + "px"
         
     }
@@ -144,3 +154,5 @@ window.onload = function () {
         }
     })
 }
+
+ 

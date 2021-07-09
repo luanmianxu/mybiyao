@@ -24,11 +24,18 @@ REQUEST.get('/search',
     fixedTop()
     backTop()
    loading()
+    var searchText =document.querySelector('.fixedSearch input')
+    var searchKey=document.querySelector('.fixedSearch button')
+    searchKey.addEventListener('click',function(){
+        var code=encodeURI(searchText.value)
+        // loading()
+        location.href=`../view/search.html?word=${code}`
+        
+    })
     var item = document.querySelectorAll('.item')
     // console.log(item);
     for (var i = 0; i < item.length;i++) {
         item[i].addEventListener('click', function () {
-            console.log(111);
             
             var ids = this.getAttribute('data-Id');
             location.href = `../view/details.html?goodId=${ids}`
